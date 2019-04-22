@@ -60,8 +60,14 @@ echo <<<_END
     </head>
     <body>
 
-    <button class="button" style="vertical-align:middle" onclick="window.location.href = '$loginLink';"><span>Log in</span></button>
-    <button class="button" style="vertical-align:middle" onclick="window.location.href = '$signupLink';"><span>Sign up</span></button>
+    <form action="authenticate.php" method="GET">
+       <button class="button" style="vertical-align:middle"><span>Log in</span></button>
+    </form>
+    
+    <form action="signup.php" method="GET">
+       <button class="button" style="vertical-align:middle"><span>Sign up</span></button>
+    </form>
+    
     
     </body>
     </html>

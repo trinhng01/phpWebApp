@@ -91,10 +91,8 @@ _END;
 }
 
 else {
-    echo "Access Denied! Please <a href='http://localhost:63342/phpWebApp/authenticate.php?_ijt=bb1ta1inmlb7knlnej9hpbtvi4'>Log in.</a>";
+    echo "Access Denied! Please <a href=authenticate.php>Log in.</a>";
 }
-
-
 
 function destroy_session_and_data()
 {
@@ -102,7 +100,6 @@ function destroy_session_and_data()
     $_SESSION = array();	// Delete all the information in the array
     session_destroy();
 }
-
 
 function sanitizeString($var) {
     $var = stripslashes($var);

@@ -27,11 +27,12 @@ if (isset($_SERVER['PHP_AUTH_USER']) && isset($_SERVER['PHP_AUTH_PW'])) {
             $_SESSION['name'] = $row[1];
 
             echo "Hi $row[1], you are now logged in as '$row[2]'";
-            die ("<p><a href=http://localhost:63342/phpWebApp/uploadFile.php?_ijt=rlea9mom1daqr0slq5j1trvp7f>Click here to access your files</a></p>");
+            die ("<p><a href=uploadFile.php>Click here to access your files</a></p>");
         }
         else {
-            echo "<p><a href=http://localhost:63342/phpWebApp/authenticate.php?_ijt=rn8ltjgq1n80427m7i8ldacouq>Log in</a></p>";
-            echo "<p><a href=http://localhost:63342/phpWebApp/signup.php?_ijt=rn8ltjgq1n80427m7i8ldacouq>Sign up</a></p>";
+            echo "Please close the browser and log in again or sign up <br><br>";
+            echo "<p><a href=authenticate.php>Log in</a></p>";
+            echo "<p><a href=signup.php>Sign up</a></p>";
             die("Invalid username/password combination");
         }
     }

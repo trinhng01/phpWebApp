@@ -4,7 +4,6 @@ require_once "login.php";
 $connect = new mysqli($hn, $un, $pw, $db);
 if ($connect->connect_error) die("Connection failed: " . $connect->connect_error);
 
-
 echo <<<_END
     <html><head><title>Sign up</title></head><body>
     
@@ -66,7 +65,7 @@ if (isset($_POST['submit'])) {
 
     echo "Welcome back $name.<br>
     Your email/username is '$email' <br><br>";
-    die ("<p><a href=http://localhost:63342/phpWebApp/authenticate.php?_ijt=rn8ltjgq1n80427m7i8ldacouq>Click here to log in</a></p>");
+    die ("<p><a href=authenticate.php>Click here to log in</a></p>");
 }
 
 function add_user($connection, $name, $email, $token)
