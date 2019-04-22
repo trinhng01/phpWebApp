@@ -1,12 +1,4 @@
 <?php
-/**
- * Trinh Nguyen
- * Homework #4 - PHP + MySQL
- * CS174
- * IDE: PhpStorm
- * Date: 2019-04-14
- */
-
 require_once "login.php";
 
 session_start();
@@ -22,9 +14,7 @@ if (isset($_SESSION['email']))
 
     destroy_session_and_data();
 
-    echo "Welcome back $name.<br>
-    Your full name is $name.<br>
-    Your email is '$email'.<br><br>";
+    echo "Welcome back $name!<br><br>";
 
     $connect = new mysqli($hn, $un, $pw, $db);
 
@@ -100,7 +90,10 @@ _END;
     $connect->close();
 }
 
-else echo "Access Denied! Please <a href='http://localhost:63342/phpWebApp/authenticate.php?_ijt=bb1ta1inmlb7knlnej9hpbtvi4'>Log in.</a>";
+else {
+    echo "Access Denied! Please <a href='http://localhost:63342/phpWebApp/authenticate.php?_ijt=bb1ta1inmlb7knlnej9hpbtvi4'>Log in.</a>";
+}
+
 
 
 function destroy_session_and_data()

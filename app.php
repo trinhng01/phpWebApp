@@ -1,9 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: TrinhNg
- * Date: 2019-04-21
- * Time: 15:11
+ * Trinh Nguyen
+ * Server-side Web Programming
+ * 04/14/2019: Upload File
+ * 04/21/2019: Sign up + Log in + Authentication
+ * IDE: PhpStorm
  */
 
 $signupLink = 'http://localhost:63342/phpWebApp/signup.php?_ijt=rn8ltjgq1n80427m7i8ldacouq';
@@ -11,7 +12,7 @@ $loginLink = 'http://localhost:63342/phpWebApp/authenticate.php?_ijt=rn8ltjgq1n8
 echo <<<_END
     <html>
     <head>
-    <title>Sign up</title>
+    <title>Welcome</title>
     <html>
     <head>
     <style>

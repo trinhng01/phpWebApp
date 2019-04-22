@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: TrinhNg
- * Date: 2019-04-18
- * Time: 14:44
- */
-
 
 require_once "login.php";
 $connect = new mysqli($hn, $un, $pw, $db);
@@ -63,23 +56,17 @@ if ($connect->query($table) === TRUE) {
 
 if (isset($_POST['submit'])) {
     $name = sanitizeString($_POST['name']);
-    echo "Name: $name <br>";
     $email = sanitizeString($_POST['email']);
-    echo "Email: $email <br>";
     $password = sanitizeString($_POST['psw']);
-    echo "Pass: $password <br>";
 
     $salt1 = "qm&h*"; $salt2 = "pg!@";
     $token = hash('ripemd128', "$salt1$password$salt2");
-    echo "Token: $token <br>";
 
     add_user($connect, $name, $email, $token);
 
     echo "Welcome back $name.<br>
-    Your full name is $name.<br>
-    Your email/username is '$username' <br><br>";
+    Your email/username is '$email' <br><br>";
     die ("<p><a href=http://localhost:63342/phpWebApp/authenticate.php?_ijt=rn8ltjgq1n80427m7i8ldacouq>Click here to log in</a></p>");
-
 }
 
 function add_user($connection, $name, $email, $token)
@@ -87,7 +74,6 @@ function add_user($connection, $name, $email, $token)
     $query = "INSERT INTO credentials VALUES(NULL, '$name', '$email', '$token')";
     $result = $connection->query($query);
     if (!$result) die($connection->error);
-    else "Insert data into table\n";
 }
 
 

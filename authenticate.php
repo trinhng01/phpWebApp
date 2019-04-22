@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: TrinhNg
- * Date: 2019-04-18
- * Time: 14:45
- */
 
 require_once 'login.php';
 $connect = new mysqli($hn, $un, $pw, $db);
@@ -17,8 +11,6 @@ if (isset($_SERVER['PHP_AUTH_USER']) && isset($_SERVER['PHP_AUTH_PW'])) {
     $query = "SELECT * FROM credentials WHERE email= '$un_temp'";
     $result = $connect->query($query);
 
-    echo "Email: $un_temp , Pass: $pw_temp <br><br>";
-
     if (!$result) die($connect->error);
 
     elseif ($result->num_rows) {
@@ -26,7 +18,6 @@ if (isset($_SERVER['PHP_AUTH_USER']) && isset($_SERVER['PHP_AUTH_PW'])) {
         $result->close();
         $salt1 = "qm&h*"; $salt2 = "pg!@";
         $token = hash('ripemd128', "$salt1$pw_temp$salt2");
-        echo "Token: $token - $row[3]<br>";
 
         //Compare passwords
         if ($token == $row[3]) {
@@ -35,7 +26,7 @@ if (isset($_SERVER['PHP_AUTH_USER']) && isset($_SERVER['PHP_AUTH_PW'])) {
             $_SESSION['password'] = $pw_temp;
             $_SESSION['name'] = $row[1];
 
-            echo "<br>Hi $row[1], you are now logged in as '$row[2]'";
+            echo "Hi $row[1], you are now logged in as '$row[2]'";
             die ("<p><a href=http://localhost:63342/phpWebApp/uploadFile.php?_ijt=rlea9mom1daqr0slq5j1trvp7f>Click here to access your files</a></p>");
         }
         else {
