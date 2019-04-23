@@ -7,7 +7,7 @@ if ($connect->connect_error) die("Connection failed: " . $connect->connect_error
 echo <<<_END
     <html><head><title>Sign up</title></head><body>
     
-    <form method='POST' action='signup.php'>
+    <form method='POST' action='signUp.php'>
         <div class="container">
             <h1>Sign Up</h1>
             <p>Please fill in this form to create an account.</p>
@@ -63,9 +63,9 @@ if (isset($_POST['submit'])) {
 
     add_user($connect, $name, $email, $token);
 
-    echo "Welcome back $name.<br>
-    Your email/username is '$email' <br><br>";
-    die ("<p><a href=authenticate.php>Click here to log in</a></p>");
+    echo "Welcome $name!<br>
+    Your email/username is '$email' <br>";
+    die ("<p><a href=userAuth.php>Click here to log in</a></p>");
 }
 
 function add_user($connection, $name, $email, $token)

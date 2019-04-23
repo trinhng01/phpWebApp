@@ -7,8 +7,8 @@
  * IDE: PhpStorm
  */
 
-$signupLink = 'http://localhost:63342/phpWebApp/signup.php?_ijt=rn8ltjgq1n80427m7i8ldacouq';
-$loginLink = 'http://localhost:63342/phpWebApp/authenticate.php?_ijt=rn8ltjgq1n80427m7i8ldacouq';
+$signupLink = 'http://localhost:63342/phpWebApp/signUp.php?_ijt=rn8ltjgq1n80427m7i8ldacouq';
+$loginLink = 'http://localhost:63342/phpWebApp/userAuth.php?_ijt=rn8ltjgq1n80427m7i8ldacouq';
 echo <<<_END
     <html>
     <head>
@@ -60,11 +60,11 @@ echo <<<_END
     </head>
     <body>
 
-    <form action="authenticate.php" method="GET">
+    <form action="userAuth.php" method="GET">
        <button class="button" style="vertical-align:middle"><span>Log in</span></button>
     </form>
     
-    <form action="signup.php" method="GET">
+    <form action="signUp.php" method="GET">
        <button class="button" style="vertical-align:middle"><span>Sign up</span></button>
     </form>
     

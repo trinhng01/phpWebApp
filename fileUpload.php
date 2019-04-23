@@ -6,13 +6,11 @@ session_start();
 //Set time out to 1 day
 ini_set('session.gc_maxlifetime', 60 * 60 * 24);
 
-if (isset($_SESSION['email']))
-{
+if (isset($_SESSION['email'])) {
+
     $email = $_SESSION['email'];
     $password = $_SESSION['password'];
     $name = $_SESSION['name'];
-
-    destroy_session_and_data();
 
     echo "Welcome back $name!<br><br>";
 
@@ -39,7 +37,7 @@ if (isset($_SESSION['email']))
     echo <<<_END
     <html><head><title>Upload File</title></head><body>
     
-    <form method='POST' action='uploadFile.php' enctype='multipart/form-data'>
+    <form method='POST' action='fileUpload.php' enctype='multipart/form-data'>
         File Name:
         <input type="text" name="name" id="name">
         <br><br> 
@@ -71,7 +69,7 @@ _END;
     }
 
 
-//Display Database Content
+    //Display Database Content
     $query = "SELECT fileName, content FROM inputfile WHERE ownerName = '$name' AND ownerEmail = '$email'";
     $result = $connect->query($query);
 
@@ -88,10 +86,9 @@ _END;
 
     echo "</body></html>";
     $connect->close();
-}
 
-else {
-    echo "Access Denied! Please <a href=authenticate.php>Log in.</a>";
+} else {
+    echo "Access Denied! Please <a href=userAuth.php>Log in.</a>";
 }
 
 function destroy_session_and_data()
