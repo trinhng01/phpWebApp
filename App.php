@@ -4,7 +4,7 @@
  * Server-side Web Programming
  * 04/14/2019: Upload File
  * 04/21/2019: Sign up + Log in + Authentication
- * 04/28/2019: Fix sanitizing MySQL string
+ * 04/28/2019: Add sanitization for MySQL data
  * IDE: PhpStorm
  */
 
