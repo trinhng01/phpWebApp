@@ -4,11 +4,11 @@
  * Server-side Web Programming
  * 04/14/2019: Upload File
  * 04/21/2019: Sign up + Log in + Authentication
+ * 04/28/2019: Fix sanitizing MySQL string
  * IDE: PhpStorm
  */
 
-$signupLink = 'http://localhost:63342/phpWebApp/signUp.php?_ijt=rn8ltjgq1n80427m7i8ldacouq';
-$loginLink = 'http://localhost:63342/phpWebApp/userAuth.php?_ijt=rn8ltjgq1n80427m7i8ldacouq';
+
 echo <<<_END
     <html>
     <head>
@@ -60,11 +60,11 @@ echo <<<_END
     </head>
     <body>
 
-    <form action="userAuth.php" method="GET">
+    <form action="userAuth.php" method="POST">
        <button class="button" style="vertical-align:middle"><span>Log in</span></button>
     </form>
     
-    <form action="signUp.php" method="GET">
+    <form action="signUp.php" method="POST">
        <button class="button" style="vertical-align:middle"><span>Sign up</span></button>
     </form>
     

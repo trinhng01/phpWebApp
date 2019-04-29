@@ -37,8 +37,8 @@ if (isset($_SERVER['PHP_AUTH_USER']) && isset($_SERVER['PHP_AUTH_PW'])) {
     }
     else die("Invalid username/password combination");
 } else {
-    header('WWW-Authenticate: Basic realm="Restricted Section"');
-    header('HTTP/1.0 401 Unauthorized');
+    header('WWW-Authenticate: Basic realm="Restricted Section"'); //Pop up
+    header('HTTP/1.0 401 Unauthorized'); // when you click cancel
     die ("Please enter your username and password");
 }
 
@@ -47,9 +47,15 @@ function mysql_entities_fix_string($connect, $string)
 {
     return htmlentities(mysql_fix_string($connect, $string));
 }
+
 function mysql_fix_string($connect, $string)
 {
     if (get_magic_quotes_gpc()) $string = stripslashes($string);
     return $connect->real_escape_string($string);
 }
 
+function sanitizeMySQL($connection, $var) {
+    $var = $connection->real_escape_string($var);
+    $var = sanitizeString($var);
+    return $var;
+}

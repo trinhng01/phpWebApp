@@ -50,7 +50,7 @@ _END;
 
 
     if (isset($_POST['submit'])) {
-        $file = sanitizeString($_POST['name']);
+        $file = sanitizeMySQL($connect, $_POST['name']);
 
         if ($_FILES['filename']['type'] == 'text/plain'){
 
@@ -58,7 +58,7 @@ _END;
             move_uploaded_file($_FILES['filename']['tmp_name'], $filename);
             if(!file_exists($filename)) die("File does not exist");
 
-            $content = sanitizeString(sanitizeString(file_get_contents($filename)));
+            $content = sanitizeMySQL($connect, file_get_contents($filename));
             $query = "INSERT INTO inputfile VALUES (NULL, '$name', '$email', '$file','$content')";
             $result = $connect->query($query);
 
@@ -104,6 +104,13 @@ function sanitizeString($var) {
     $var = htmlentities($var);
     return $var;
 }
+
+function sanitizeMySQL($connection, $var) {
+    $var = $connection->real_escape_string($var);
+    $var = sanitizeString($var);
+    return $var;
+}
+
 
 ?>
 
